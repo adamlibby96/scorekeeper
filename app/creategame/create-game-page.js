@@ -32,7 +32,8 @@ const dialogs = require("tns-core-modules/ui/dialogs");
  * 
  * 
  */
-
+const labelStyle =
+  "float: left; font-size: 14px;  padding: 12px; overflow: auto; width: 50%;";
 function onNavigatingTo(args) {
     const component = args.object;
 
@@ -40,6 +41,22 @@ function onNavigatingTo(args) {
 
     component.bindingContext = new BrowseViewModel();
 }
+
+function goToHome(args) {
+    args.object.page.frame.navigate("home/home-items-page");
+  }
+  exports.goToHome = goToHome;
+  
+  function goToSettings(args) {
+    args.object.page.frame.navigate("settings/settings-page");
+  }
+  exports.goToSettings = goToSettings;
+  
+  function goToInfo(args) {
+    args.object.page.frame.navigate("info/info-page");
+  }
+  exports.goToInfo = goToInfo;
+  
 
 function promptForName(args) {
     var button = args.object;
@@ -70,6 +87,7 @@ function generatePeople(args) {
     textField.editable = false;
     const page = textField.page;
     const list = page.getViewById("peopleList");
+    list.removeChildren();
     var vm = new observableModule.Observable();
 
     console.log("About to create " + textField.text + " people");
@@ -90,6 +108,7 @@ function generatePeople(args) {
         label.text = i+1;
         label.row = "0";
         label.col = "0";
+        label.style = labelStyle;
 
         var tf = new TextField.TextField();
         tf.hint = "Name (optional)";

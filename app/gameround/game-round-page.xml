@@ -4,32 +4,37 @@
     <ActionBar class="action-bar">
         <Label id='titlebar' class="action-bar-title" loaded="onTitleLoaded" text=""></Label>
     </ActionBar>
+    <GridLayout rows="*,60" >
+        <StackLayout row="0">
+            <StackLayout>
+                <GridLayout rows="*,60,40">
+                    <ScrollView row="0">
+                        <StackLayout id='peopleList' loaded="populatePlayers">
+                            <GridLayout rows="auto" columns="* * * *">
+                                <Label style="font-size: 14px; float: left; padding: 6px; overflow: auto; width: 50%;" textWrap="true" text="Player" row="0" col="0" />
+                                <Label style="font-size: 14px; float: left; padding: 6px; overflow: auto; width: 50%;" textWrap="true" text="Round Score" row="0" col="1" />
+                                <Label style="font-size: 14px; float: left; padding: 6px; overflow: auto; width: 50%;" textWrap="true" text="Round Comment" row="0" col="2" />
+                                <Label style="font-size: 14px; float: left; padding: 6px; overflow: auto; width: 50%;" textWrap="true" text="Total Score" row="0" col="3" />
+                            </GridLayout>
+                        </StackLayout>
+                    </ScrollView>
+                    <GridLayout row="1" rows='auto' columns='* *'>
+                        <Button row="1" col="0" text='prev' tap="goToPrevRound" class="prevRoundBtn" />
+                        <Button row="1" col="1" text='next' tap="goToNextRound" class="nextRoundBtn" />
+                    </GridLayout>
 
-    <StackLayout>
-        <StackLayout>
-            <GridLayout rows="*,60,40">
-                <ScrollView row="0">
-                    <StackLayout id='peopleList' loaded="populatePlayers">
-                        <GridLayout rows="auto" columns="* * * *">
-                            <Label style="font-size: 14px; float: left; padding: 6px; overflow: auto; width: 50%;" textWrap="true" text="Player" row="0" col="0" />
-                            <Label style="font-size: 14px; float: left; padding: 6px; overflow: auto; width: 50%;" textWrap="true" text="Round Score" row="0" col="1" />
-                            <Label style="font-size: 14px; float: left; padding: 6px; overflow: auto; width: 50%;" textWrap="true" text="Round Comment" row="0" col="2" />
-                            <Label style="font-size: 14px; float: left; padding: 6px; overflow: auto; width: 50%;" textWrap="true" text="Total Score" row="0" col="3" />
-                        </GridLayout>
-                    </StackLayout>
-                </ScrollView>
-                <GridLayout row="1" rows='auto' columns='* *'>
-                    <Button row="1" col="0" text='prev' tap="goToPrevRound" class="prevRoundBtn" />
-                    <Button row="1" col="1" text='next' tap="goToNextRound" class="nextRoundBtn" />
+                    <GridLayout row="2" rows='auto' columns='* *'>
+                        <Button row="1" col="0" text='Start Over' tap="startOver" class="prevRoundBtn" height="50px" width="150" fontSize="12px" />
+                        <Button row="1" col="1" text='End Game' tap="endGame" class="nextRoundBtn" height="50px" width="150" fontSize="12px" />
+                    </GridLayout>
+
                 </GridLayout>
-
-                <GridLayout row="2" rows='auto' columns='* *'>
-                    <Button row="1" col="0" text='Start Over' tap="endGame" class="prevRoundBtn" height="50px" width="150" fontSize="12px" />
-                    <Button row="1" col="1" text='End Game' tap="startOver" class="nextRoundBtn" height="50px" width="150" fontSize="12px" />
-                </GridLayout>
-
-            </GridLayout>
+            </StackLayout>
         </StackLayout>
-    </StackLayout>
-
+        <GridLayout row="1" rows="auto" columns="* * *">
+            <Button text="Home" row="0" col="0" tap="goToHome" />
+            <Button text="Settings" row="0" col="1" tap="goToSettings" />
+            <Button text="Info" row="0" col="2" tap="goToInfo" />
+        </GridLayout>
+    </GridLayout>
 </Page>

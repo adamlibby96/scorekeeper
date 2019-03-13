@@ -1,0 +1,22 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <Label class="action-bar-title" text="Fulfillment"></Label>
+    </ActionBar>
+
+    <GridLayout rows="*,60" >
+        <StackLayout row="0">
+        <Label text="Name: Adam Libby" />
+        <Label text="Assignment 4: Scorekeeper" />
+        <Label text="This assignment is in fulfillment of the requirements for assignment 4 of CMSC 4233 in the Spring 2019 Mobile Apps Dev course at Oklahoma Christian University" textWrap="true" />
+    </StackLayout>
+    <GridLayout row="1" rows="auto" columns="* * *">
+            <Button text="Home" row="0" col="0" tap="goToHome" />
+            <Button text="Settings" row="0" col="1" tap="goToSettings" />
+            <Button text="Info" row="0" col="2" tap="goToInfo" />
+        </GridLayout>
+    </GridLayout>
+</Page>

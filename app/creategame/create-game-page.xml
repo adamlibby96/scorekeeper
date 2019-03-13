@@ -5,25 +5,31 @@
         <Label class="action-bar-title" text="Create Game"></Label>
     </ActionBar>
 
-    <StackLayout>
-        <GridLayout rows='auto' columns='* *'>
-            <Label row='0' col='0' text="Game Title:" />
-            <TextField row='0' col='1' hint='Title' id="gametitle" />
-        </GridLayout>
-
-        <StackLayout>
+    <GridLayout rows="*,60">
+        <StackLayout row="0">
             <GridLayout rows='auto' columns='* *'>
-                <Label row='0' col='0' text="Number of Players:" />
-                <TextField row='0' col='1' hint='ex: 10' keyboardType="number" returnKeyType="done" returnPress="generatePeople" />
+                <Label row='0' col='0' text="Game Title:" />
+                <TextField row='0' col='1' hint='Title' id="gametitle" />
             </GridLayout>
-            <GridLayout rows="*,60">
-            <ScrollView row="0">
-                <StackLayout id='peopleList'>
-                </StackLayout>
-            </ScrollView>
-            <Button row="1" text='Create' tap="createGame" />
-            </GridLayout>
-        </StackLayout>
-    </StackLayout>
 
+            <StackLayout>
+                <GridLayout rows='auto' columns='* *'>
+                    <Label row='0' col='0' text="Number of Players:" />
+                    <TextField row='0' col='1' hint='ex: 10' keyboardType="number" returnKeyType="done" returnPress="generatePeople" />
+                </GridLayout>
+                <GridLayout rows="*,60">
+                    <ScrollView row="0">
+                        <StackLayout id='peopleList'>
+                        </StackLayout>
+                    </ScrollView>
+                    <Button row="1" text='Create' tap="createGame" />
+                </GridLayout>
+            </StackLayout>
+        </StackLayout>
+        <GridLayout row="1" rows="auto" columns="* * *">
+            <Button text="Home" row="0" col="0" tap="goToHome" />
+            <Button text="Settings" row="0" col="1" tap="goToSettings" />
+            <Button text="Info" row="0" col="2" tap="goToInfo" />
+        </GridLayout>
+    </GridLayout>
 </Page>

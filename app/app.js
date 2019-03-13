@@ -18,8 +18,30 @@ global.allGameSaveName = "AllGames";
 
 global.loadGames = () => {
   //console.log(appSettings.getString(global.allGameSaveName));
-  global.allGames = JSON.parse(appSettings.getString(global.allGameSaveName));
+  if (appSettings.getString(global.allGameSaveName) != undefined) {
+    global.allGames = JSON.parse(appSettings.getString(global.allGameSaveName));
+  } else {
+
+    global.allGames = undefined;
+  }
 };
+
+global.clearAllData = () => {
+  appSettings.clear();
+  global.allGames = [];
+
+  global.currentRound = 0;
+  global.currentGame = {
+    title: "",
+    isComplete: false,
+    players: []
+  };
+
+  global.person = [];
+  global.players = [];
+  global.allGameSaveName = "AllGames";
+
+}
 
 global.restartCurrentGame = () => {
   global.currentGame.players.forEach(player => {
@@ -32,11 +54,18 @@ global.restartCurrentGame = () => {
 
 global.gameOver = () => {
   global.currentGame.isComplete = true;
-  global.allGames = [...global.allGames, global.currentGame];
+  if (global.allGames == undefined) {
+    global.allGames = [global.currentGame];
+
+  } else {
+    global.allGames = [...global.allGames, global.currentGame];
+  }
   appSettings.setString(
     global.allGameSaveName,
     JSON.stringify(global.allGames)
   );
+  global.person = [];
+  global.players = [];
   global.currentGame = {
     title: "",
     isComplete: false,
@@ -70,10 +99,10 @@ global.updateRoundScoreForPlayer = (id, score) => {
   global.currentGame.players[id].roundScore[global.currentRound] = score;
   console.log(
     "Player " +
-      global.currentGame.players[id].person.id +
-      " received " +
-      global.currentGame.players[id].roundScore[global.currentRound] +
-      " points"
+    global.currentGame.players[id].person.id +
+    " received " +
+    global.currentGame.players[id].roundScore[global.currentRound] +
+    " points"
   );
   var sum = 0;
   for (var i = 0; i < currentRound + 1; i++) {
@@ -103,6 +132,8 @@ global.setPersonName = (id, name) => {
     "Person: " + global.person[id].id + ", " + global.person[id].name
   );
 };
+
+
 
 application.run({ moduleName: "app-root" });
 

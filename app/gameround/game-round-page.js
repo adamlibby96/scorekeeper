@@ -58,10 +58,28 @@ exports.onTitleLoaded = onTitleLoaded;
 function endGame(args) {
   const button = args.object;
   const page = button.page;
+  
 
   global.gameOver();
   page.frame.navigate("home/home-items-page");
 }
+
+function goToHome(args) {
+  args.object.page.frame.navigate("home/home-items-page");
+}
+exports.goToHome = goToHome;
+
+function goToSettings(args) {
+  args.object.page.frame.navigate("settings/settings-page");
+}
+exports.goToSettings = goToSettings;
+
+function goToInfo(args) {
+  args.object.page.frame.navigate("info/info-page");
+}
+exports.goToInfo = goToInfo;
+
+
 
 function startOver(args) {
   global.restartCurrentGame();
@@ -77,8 +95,9 @@ const labelStyle =
 function populatePlayers(args) {
   const list = args.object;
   const page = list.page;
-
+  list.removeChildren();
   var size = global.currentGame.players.length;
+  console.log(size);
   for (var i = 0; i < size; i++) {
     var player = global.currentGame.players[i];
     var grid = new GridLayout.GridLayout();

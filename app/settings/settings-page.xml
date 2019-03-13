@@ -2,16 +2,12 @@
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Home"></Label>
+        <Label class="action-bar-title" text="Settings"></Label>
     </ActionBar>
     <GridLayout rows="*,60">
         <StackLayout row="0">
-            <Button text="Create New Game" tap='goToCreateEvent' />
-            <ScrollView>
-                <StackLayout loaded="populatePastGames">
-                    <Label text="Past Games: " style="text-align: center; font-size: 20px;  padding: 12px; overflow: auto; width: 100%;" />
-                </StackLayout>
-            </ScrollView>
+            <Label text="Warning, this clears everything. Even saved game data!" textWrap="true" style="text-align: center; font-size: 16px; color: red; padding: 12px; margin-left: 25px; width: 300px;" />
+            <Button text="Clear All Data" tap="clearAllData" width="200px" />
         </StackLayout>
         <GridLayout row="1" rows="auto" columns="* * *">
             <Button text="Home" row="0" col="0" tap="goToHome" />
@@ -19,5 +15,4 @@
             <Button text="Info" row="0" col="2" tap="goToInfo" />
         </GridLayout>
     </GridLayout>
-
 </Page>
