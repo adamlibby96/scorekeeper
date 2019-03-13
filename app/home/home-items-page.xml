@@ -1,0 +1,16 @@
+<Page class="page" navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <Label class="action-bar-title" text="Home"></Label>
+    </ActionBar>
+
+    <StackLayout>
+        <Button text="Create New Game" tap='goToCreateEvent' />
+        <ScrollView>
+            <StackLayout loaded="populatePastGames">
+                <Label text="Past Games: " />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</Page>
